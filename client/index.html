@@ -1,0 +1,59 @@
+<html>
+  <head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<!-- Load TensorFlow.js. This is required to use MobileNet. -->
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.1"> </script>
+	<!-- Load the MobileNet model. -->
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@1.0.0"> </script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/main.css" rel="stylesheet">   
+  </head>
+  <body>
+	<nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Image classifier demo</a>
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Help</button>
+        </div>
+    </nav>
+    <div class="container">
+        <div id="content" style="margin-top:2em">
+		<form id="upload-file" method="post" enctype="multipart/form-data" onclick="startLoadingImage()">
+			<label for="imageUpload" class="upload-label">
+				Choose image
+			</label>
+			<input type="file" name="image" id="imageUpload" accept=".png, .jpg, .jpeg"
+				onchange="readURL(this);"
+			>
+		</form>
+
+		<div class="image-section" id="img_top" style="display:none;">
+			<div class="img-preview">
+				<div id="imagePreview">
+					<!-- Add an image that we will use to test -->
+					<img id="img" crossOrigin src="" width=227 height=227/>
+
+				</div>	
+			</div>
+			<div>
+				<button type="button" class="btn btn-primary btn-lg " id="btn-predict" onclick ="predictNewImage()">Predict!</button>
+			</div>
+			<h3 id="result"
+				align="left"
+				style="color:white;"
+				/>
+		</div>
+		<div class="loader" id="loader-id" style="display:none;"></div>
+		</div>
+    </div>
+	
+    <!-- Load index.js after the content of the page -->
+    <script src="index.js"></script>
+  </body>
+    <footer>
+	</footer>
+</html>
